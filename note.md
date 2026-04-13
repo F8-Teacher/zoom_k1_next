@@ -32,3 +32,37 @@ Tại sao chỉ có server component lại cần RSC Payload?
 Cách navigation trong Next: Dùng component Link (của Next)
 
 Khi user bấm vào component Link ==> Trình duyệt gọi api đặc biệt lên next server ==> lấy RSC Payload của trang mới ==> So sánh thực điểm khác nhau với RSC Payload của trang cũ ==> Dùng React DOM để cập nhật lại những phần thay đổi
+
+## Data Fetching
+
+1. Server component
+
+- Gọi trực tiếp vào server component (Dùng await)
+- Dùng fetch (Khuyến nghị của Next)
+
+2. Client Component
+
+- Giống như React
+- Axios, Tanstack Query, useEffect
+
+Client: Axios + Tanstack Query
+Form: React hook form + Zod
+Global State: Zustand
+
+## Route Handler
+
+Xây dựng các endpoint API
+
+- Sử dụng 1 số tính năng đặc biệt của Next: Set cookie http only, revalidate cache,...
+- Web hook để xử lý thanh toán
+
+## Server Action (Server function)
+
+- Hàm chạy trên server (Cho dù gọi bất kỳ đâu)
+- Tác dụng: Xử lý 1 số tinh năng đặc biệt của next: cache, cookie
+- Ngữ cảnh: Thường áp dụng cho các trường hợp mutation, xử lý form
+
+Buổi sau:
+
+- Cache: fetch cache, revalidate, "use cache"
+- Chuẩn bị endpoint API CRUD

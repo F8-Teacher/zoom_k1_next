@@ -1,4 +1,3 @@
-import Nav from "./_components/Nav";
 import "./globals.css";
 export const metadata = {
   title: "Create Next App",
@@ -8,10 +7,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <Nav />
-        <main className="max-w-300 mx-auto">{children}</main>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
