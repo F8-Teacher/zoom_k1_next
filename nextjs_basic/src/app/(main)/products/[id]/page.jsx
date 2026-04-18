@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import ProductImage from "./ProductImage";
-
-const getProduct = async (id) => {
+import { cache } from "react";
+const getProduct = cache(async (id) => {
   const response = await fetch(`${process.env.SERVER_API}/products/${id}`);
   if (response.status === 404) {
     return;
@@ -10,7 +10,15 @@ const getProduct = async (id) => {
     throw new Error("Có lỗi khi lấy product");
   }
   return response.json();
+});
+export const generateMetadata = async ({ params }) => {
+  const { id } = await params;
+  const product = await getProduct(id);
+  return {
+    title: product.title,
+  };
 };
+
 export default async function ProductDetailpage({ params }) {
   const { id } = await params;
   const product = await getProduct(id);
